@@ -62,6 +62,11 @@ export function INFO() {
  * @returns
  */
 export function ISBLANK(value) {
+  if (arguments.length !== 1) {
+    //pop-up message in Excel
+    return error.na
+  }
+
   return value === null
 }
 
