@@ -303,6 +303,10 @@ export function SHEETS() {
  * @returns
  */
 export function TYPE(value) {
+  if (Array.isArray(value)) {
+    return 64
+  }
+
   if (ISNUMBER(value)) {
     return 1
   }
@@ -317,9 +321,5 @@ export function TYPE(value) {
 
   if (ISERROR(value)) {
     return 16
-  }
-
-  if (Array.isArray(value)) {
-    return 64
   }
 }
