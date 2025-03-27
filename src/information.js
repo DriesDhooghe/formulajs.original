@@ -278,6 +278,10 @@ export function ISTEXT(value) {
  * @returns
  */
 export function N(value) {
+  if (Array.isArray(value)) {
+    return N(value[0])
+  }
+
   if (ISNUMBER(value)) {
     return value
   }
