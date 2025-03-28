@@ -459,10 +459,6 @@ export function EDATE(start_date, months) {
     return error.value
   }
 
-  // store the day and temporarily set to 1, which is safe
-  let storedDay = start_date.getDate()
-  start_date.setDate(1)
-
   start_date = utils.getNumber(start_date)
   if (typeof start_date === 'string') {
     return error.value
@@ -471,21 +467,21 @@ export function EDATE(start_date, months) {
     return error.num
   }
 
-  let targetMonth = start_date.getMonth()
+  //let targetMonth = start_date.getMonth()
 
   // if storedDay > 28 then we need to check end-of-month scenarios
-  if (storedDay > 28) {
-    let daysInTargetMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][targetMonth]
+  //if (storedDay > 28) {
+  //  let daysInTargetMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][targetMonth]
 
-    // if target month is February, check for a leap year
-    let targetYear = start_date.getFullYear()
-    if (targetMonth === 1 && ((targetYear % 4 === 0 && targetYear % 100 !== 0) || targetYear % 400 === 0)) {
-      daysInTargetMonth = 29
-    }
-    storedDay = Math.min(storedDay, daysInTargetMonth)
-  }
+  // if target month is February, check for a leap year
+  //  let targetYear = start_date.getFullYear()
+  //  if (targetMonth === 1 && ((targetYear % 4 === 0 && targetYear % 100 !== 0) || targetYear % 400 === 0)) {
+  //    daysInTargetMonth = 29
+  //  }
+  //  storedDay = Math.min(storedDay, daysInTargetMonth)
+  //}
 
-  start_date.setDate(storedDay)
+  //start_date.setDate(storedDay)
 
   months = utils.getNumber(months)
   if (typeof months === 'string') {
