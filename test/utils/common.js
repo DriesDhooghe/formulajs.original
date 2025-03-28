@@ -250,18 +250,15 @@ describe('Utils => Common', () => {
       })
 
       it('should parse date from serial number', () => {
-        expect(utils.parseDate(1).getTime()).to.equal(new Date('1/1/1900').getTime())
-        expect(utils.parseDate(61).getTime()).to.equal(new Date('3/1/1900').getTime())
-        expect(utils.parseDate(60.05).getTime()).to.equal(new Date('2/29/1900 01:12:00').getTime())
-        expect(utils.parseDate(40729).getTime()).to.equal(new Date('7/5/2011').getTime())
-        expect(utils.parseDate(40729.1805555556).getTime()).to.equal(new Date('7/5/2011 04:20:00').getTime())
-      })
-
-      xit('should parse non-iso formatted string', () => {
-        expect(utils.parseDate('2009-7-1').getTime()).to.equal(new Date(2009, 7 - 1, 1).getTime())
+        expect(utils.parseDate(1).getTime()).to.equal(new Date('1900-01-01 00:00:00 GMT').getTime())
+        expect(utils.parseDate(61).getTime()).to.equal(new Date('1900-03-01 00:00:00 GMT').getTime())
+        expect(utils.parseDate(60.05).getTime()).to.equal(new Date('1900-02-29 01:12:00 GMT').getTime())
+        expect(utils.parseDate(40729).getTime()).to.equal(new Date('2011-07-05').getTime())
+        expect(utils.parseDate(40729.1805555556).getTime()).to.equal(new Date('2011-07-05 04:20:00 GMT').getTime())
       })
 
       it('should parse date from string', () => {
+        expect(utils.parseDate('2009-7-1').getTime()).to.equal(new Date(2009, 7 - 1, 1).getTime())
         expect(utils.parseDate('7/1/2009').getTime()).to.equal(new Date(2009, 7 - 1, 1).getTime())
         expect(utils.parseDate('07/01/2009').getTime()).to.equal(new Date(2009, 7 - 1, 1).getTime())
         expect(utils.parseDate('2009/07-01').getTime()).to.equal(new Date(2009, 7 - 1, 1).getTime())
